@@ -1,0 +1,6 @@
+#install Python dependencies, please type
+#pip install -r requirements.txt
+
+streamlit==0.60.0
+pandas==0.25.1
+numpy==1.17.2
