@@ -1,0 +1,11 @@
+#install Python dependencies, please type
+#pip install -r requirements.txt
+
+streamlit==0.60.0
+pandas==0.25.1
+numpy==1.17.2
+torch==1.5.0
+transformers==2.11.0
+seaborn==0.10.1
+scikit-learn==0.23.1
+scipy==1.4.1
