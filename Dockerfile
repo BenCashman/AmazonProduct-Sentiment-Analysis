@@ -3,9 +3,10 @@
 # pull miniconda image
 FROM continuumio/miniconda3
 
-# copy local files into container
+#copy local files into container
 COPY app.py /tmp/
 COPY requirements.txt /tmp/
+COPY assets/ /tmp/assets
 
 #COPY data /tmp/data
 # .streamlit for something to do with making enableCORS=False
