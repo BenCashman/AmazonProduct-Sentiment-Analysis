@@ -41,7 +41,7 @@ gdown==3.11.1
 
 ### Installation:
 Run the following command to install the necessary dependencies.
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 ### Model Training and Exploration
 To be able to reproduce my work with data exploration, model training, and model evaluation you can navigate to the AMZ_Products_review.ipynb notebook in this repo and click the open in colab button.
 ## Running Streamlit
