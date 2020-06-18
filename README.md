@@ -21,10 +21,10 @@ There are hundreds of thousands of products on the Amazon marketplace,  many of 
 One solution might be to hire someone to read these reviews however this generates significant overhead. As such a natural language processing algorithm utilized for sentiment analysis will provide a user with an overall sentiment score which can then be used to assess a product's performance in the marketplace saving time and money in the long term.  
 ### Environment Setup
 To be able to run locally clone and download this repo:
-
+```
 Git clone https://github.com/BenCashman/AmazonProduct-Sentiment-Analysis
 cd AmazonProduct-Sentiment-Analysis
-
+```
 ### System Requirements
 
 The following packages and dependencies are required to run this app.
