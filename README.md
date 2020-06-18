@@ -3,11 +3,11 @@
 ### Table of Contents
 1. Why this Software is needed
 
-  *Businesses have difficulty measuring the success of a product at          launch.
+   * Businesses have difficulty measuring the success of a product at          launch.
 
-  *There is a high saturation of useless Amazon product reviews.
+   * There is a high saturation of useless Amazon product reviews.
 
-  *Not all users rate products with the same weighting, regarding rating scores.  
+   * Not all users rate products with the same weighting, regarding rating scores.  
 2. Environment Setup
 3. System Requirements
 4. Model Training and Data Exploration
