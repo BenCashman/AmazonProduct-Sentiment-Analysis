@@ -22,7 +22,7 @@ One solution might be to hire someone to read these reviews however this generat
 ### Environment Setup
 To be able to run locally clone and download this repo:
 ```
-Git clone: [Link](https://github.com/BenCashman/AmazonProduct-Sentiment-Analysis)
+Git clone: https://github.com/BenCashman/AmazonProduct-Sentiment-Analysis
 cd AmazonProduct-Sentiment-Analysis
 ```
 ### System Requirements
@@ -48,13 +48,16 @@ Run the following command to install the necessary dependencies.
 ### Model Training and Exploration
 To be able to reproduce my work with data exploration, model training, and model evaluation you can navigate to the AMZ_Products_review.ipynb notebook in this repo and click the open in colab button.
 ## Running Streamlit
-For a local build:  
-streamlit run app.py
+For a local build:
+
+`streamlit run app.py`
 
 ### Streamlit in Docker
-Docker build:  
-docker build -t streamlit:v4 -f Dockerfile .
+Docker build:
 
-Docker run:   
-docker run -p 8501:8501 streamlit:v4
+`docker build -t streamlit:v4 -f Dockerfile .`
+
+Docker run:
+
+`docker run -p 8501:8501 streamlit:v4`
 ### Deployment:
