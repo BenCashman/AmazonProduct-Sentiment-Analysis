@@ -1,5 +1,6 @@
 
 #Our import list
+import gdown
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -8,6 +9,7 @@ import transformers
 import seaborn as sns
 import matplotlib.pyplot as plt
 import torch.nn as nn
+import os
 #Libraries to pull
 from transformers import BertModel
 from torch import nn
@@ -30,9 +32,8 @@ sns.set_palette(sns.color_palette(HAPPY_COLORS_PALETTE))
 RANDOM_SEED = 42
 np.random.seed(RANDOM_SEED)
 torch.manual_seed(RANDOM_SEED)
+#Set device for pytorch GPU / CPU
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
-
 
 
 def main():
@@ -40,6 +41,7 @@ def main():
     #global variables to be used in script
     PRE_TRAINED_MODEL_NAME = 'bert-base-cased'
     class_names = ['negative', 'positive']
+    tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
 
 
     class Model(nn.Module):
@@ -71,17 +73,25 @@ def main():
     st.sidebar.markdown("😃Is your review positive or negative?😞")
 
     #Here we will load the data into a cache to prevent repeated work)
+    @st.cache
     def load_data():
         #Function to pull in data from our Amazon s3 Bucket
         data = pd.read_csv('https://amazonproductdata.s3-us-west-1.amazonaws.com/train.csv')
         return data
 
     #let's ingest our raw data here
-    raw_data = load_data()
-    #let's also use a smaller subset to work with to make things a bit more light weight
-    df = raw_data.sample(2000)
-    #let's also remove the null values as there are very few in out data set
-    df.dropna(inplace=True)
+    df = load_data()
+
+
+    @st.cache
+    def get_model():
+        gdown.download(
+        "https://drive.google.com/uc?id=1cz41bp4tf37Mky_R31T41qiSN6ucMjGi",
+        "./assets/model_state_dict.bin", quiet=False
+        )
+
+    get_model()
+
 
     #A function for loading models incase we include other models later
     def load_model(filepath):
@@ -90,8 +100,12 @@ def main():
         model.load_state_dict(torch.load(filepath, map_location=device))
         return model
 
-    #conisder loading this into text box classifica.ion funtion
-    model = load_model('./model/BERT_trained_model')
+
+    #loading model into memory - works locally
+    #model = load_model('./model/BERT_trained_model')   #This one works locally!
+    model = load_model('./assets/model_state_dict.bin')
+
+
 
     #here we have the ability to plot data metrics
     def plot_metrics(metrics_list):
@@ -99,8 +113,9 @@ def main():
             st.subheader("Confusion Matrix")
             plot_confusion_matrix(model, x_test, y_test, display_labels=class_names)
 
+    #function to provide inference from BERT model
     def BERT_inference(review_text):
-            tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+            #tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
             #Now we must encode the use text
             encoded_review = tokenizer.encode_plus(
             review_text,
@@ -124,7 +139,7 @@ def main():
     #sidebar options to add more rich features to our app
     if st.sidebar.checkbox("Show raw data", False):
         st.subheader("Amazon Review Sentiment Analysis. (Polarity Classification)")
-        st.table(df)
+        st.table(df.head(10))
     #Generating a textbox for user input
     if st.sidebar.checkbox("Input text for inference", False):
         st.subheader("Amazon Review Dataset for Sentiment Analysis. (Inference Demonstration.)")
