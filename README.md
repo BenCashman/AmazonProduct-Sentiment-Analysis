@@ -29,7 +29,7 @@ cd AmazonProduct-Sentiment-Analysis
 
 The following packages and dependencies are required to run this app.
 
-streamlit==0.60.0  
+`streamlit==0.60.0
 pandas==0.25.1  
 numpy==1.17.2  
 torch==1.5.0  
@@ -37,7 +37,7 @@ transformers==2.11.0
 seaborn==0.10.1  
 scikit-learn==0.23.1  
 scipy==1.4.1  
-gdown==3.11.1
+gdown==3.11.1`
 
 ### Installation:
 Run the following command to install the necessary dependencies.
