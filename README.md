@@ -39,6 +39,7 @@ seaborn==0.10.1
 scikit-learn==0.23.1  
 scipy==1.4.1
 gdown==3.11.1
+python==3.8.2
 ```
 
 ### Installation:
