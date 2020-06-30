@@ -22,7 +22,7 @@ One solution might be to hire someone to read these reviews however this generat
 ### Environment Setup
 To be able to run locally clone and download this repo:
 ```
-Git clone: https://github.com/BenCashman/AmazonProduct-Sentiment-Analysis
+git clone: https://github.com/BenCashman/AmazonProduct-Sentiment-Analysis
 cd AmazonProduct-Sentiment-Analysis
 ```
 ### System Requirements
