@@ -12,8 +12,8 @@ COPY assets/ /tmp/assets
 # .streamlit for something to do with making enableCORS=False
 COPY .streamlit /tmp/.streamlit
 
-# install python 3.8.2
-RUN conda install python=3.8.2
+# install python 3.7
+RUN conda install python=3.7
 # RUN conda install faiss-cpu=1.5.1 -c pytorch -y
 
 ENV PORT 8080
