@@ -1,22 +1,12 @@
 # Dockerfile for building streamlit app
 
-# pull miniconda image
-FROM continuumio/miniconda3
+#Install python 3.7
+FROM python:3.7
 
 #copy local files into container
 COPY app.py /tmp/
 COPY requirements.txt /tmp/
 COPY assets/ /tmp/assets
-
-#COPY data /tmp/data
-# .streamlit for something to do with making enableCORS=False
-COPY .streamlit /tmp/.streamlit
-
-# install python 3.7
-RUN conda install python=3.7
-# RUN conda install faiss-cpu=1.5.1 -c pytorch -y
-
-ENV PORT 8080
 
 # change directory
 WORKDIR /tmp
@@ -24,6 +14,15 @@ WORKDIR /tmp
 # install dependencies
 RUN apt-get update && apt-get install -y vim g++
 RUN pip install -r requirements.txt
+
+
+#COPY data /tmp/data
+# .streamlit for something to do with making enableCORS=False
+COPY .streamlit .streamlit
+
+#ENV PORT 8080
+
+
 
 # run commands
 CMD ["streamlit", "run", "app.py"]
